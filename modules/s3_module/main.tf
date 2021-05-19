@@ -21,20 +21,20 @@ resource "aws_s3_bucket" "my_aws_s3_bucket" {
   "Version": "2012-10-17",
   "Statement": [
     {
-        Sid       = "IPAllow"
-        Effect    = "Deny"
-        Principal = "*"
-        Action    = "s3:*"
-        Resource = [
-          aws_s3_bucket.my_aws_s3_bucket.arn,
-          "${aws_s3_bucket.my_aws_s3_bucket.arn}/*",
-        ]
-        Condition = {
-          IpAddress = {
-            "aws:SourceIp" = "8.8.8.8/32"
-          }
+      "Sid": "IPAllow",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::${var.bucket_name}",
+        "arn:aws:s3:::${var.bucket_name}/*"
+      ],
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "8.8.8.8/32"
         }
-      },
+      }
+    }
   ]
 }
 POLICY
