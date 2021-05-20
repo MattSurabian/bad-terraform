@@ -31,7 +31,7 @@ resource "aws_s3_bucket" "my_aws_s3_bucket" {
       ],
       "Condition": {
         "IpAddress": {
-          "aws:SourceIp": "8.8.8.8/32"
+          "aws:SourceIp": "8.8.8.8/32" #BAD?
         }
       }
     }
@@ -43,10 +43,10 @@ POLICY
 
 resource "aws_s3_bucket_public_access_block" "my_aws_s3_bucket_access_block" {
   bucket                  = aws_s3_bucket.my_aws_s3_bucket.id
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = false #BAD! NO!
+  block_public_policy     = false #BAD! NO!
+  ignore_public_acls      = false #BAD! NO!
+  restrict_public_buckets = false #BAD! NO!
 }
 
 

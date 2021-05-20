@@ -7,9 +7,9 @@ resource "aws_iam_policy" "incredible_policy" {
     {
       "Effect": "Allow",
       "Action": [
-        "s3:*"
+        "s3:*" #BAD?
       ],
-      "Resource": "*"
+      "Resource": "*" #BAD?
     }
   ]
 }
@@ -17,8 +17,8 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "incredible_profile" {
-  name = "incredible-profile"
-  role = "incredible-profile-role"
+  name = "incredible-profile" #BAD! NO!
+  role = "incredible-profile-role" #BAD! NO!
 }
 
 resource "aws_iam_role" "incredible_role" {
